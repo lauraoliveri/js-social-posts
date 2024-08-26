@@ -62,7 +62,8 @@ const posts = [
 const container = document.getElementById('container');
 for (let i = 0; i < posts.length; i++) {
     const currentPost = posts[i];
-    console.log(currentPost)
+    console.log(currentPost);
+
     container.innerHTML += `
         <div class="post">
             <div class="post__header">
@@ -72,7 +73,7 @@ for (let i = 0; i < posts.length; i++) {
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${posts[i].author.name}</div>
-                        <div class="post-meta__time">4 mesi fa</div>
+                        <div class="post-meta__time">${posts[i].created}</div>
                     </div>                    
                 </div>
             </div>
@@ -83,13 +84,13 @@ for (let i = 0; i < posts.length; i++) {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" data-postid="1">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -97,22 +98,28 @@ for (let i = 0; i < posts.length; i++) {
 
     
     `;
+        // milestone 3
+
+    const likeButton = document.querySelector(".like-button");
+    // console.log(likeButton);
+
+    let likeCounter= document.querySelector(".js-likes-counter");
+    // console.log(likeCounter);
+    likeButton.addEventListener('click', function () {
+        likeButton.classList.add('like-button--liked');
+
+        likeCounter.innerHTML = parseFloat(likeCounter.innerHTML) + 1;
+
+        // creo l'array
+
+        const myArr = [];
+        
+
+    });
+
 }
 
 
-// milestone 3
-
-const likeButton = document.querySelector(".like-button");
-// console.log(likeButton);
-
-let likeCounter= document.querySelector("#like-counter-1");
-console.log(likeCounter)
 
 
-likeButton.addEventListener('click', function () {
-    likeButton.classList.add('like-button--liked');
-
-    likeCounter.innerHTML = parseFloat(likeCounter.innerHTML) + 1;
-
-    
-})
+   

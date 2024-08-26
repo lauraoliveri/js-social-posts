@@ -57,7 +57,7 @@ const posts = [
 ];
 
 
-// metto i post nel dom
+// milestone 2: metto i post nel dom
 
 const container = document.getElementById('container');
 for (let i = 0; i < posts.length; i++) {
@@ -98,3 +98,21 @@ for (let i = 0; i < posts.length; i++) {
     
     `;
 }
+
+
+// milestone 3
+
+const likeButton = document.querySelector(".like-button");
+// console.log(likeButton);
+
+let likeCounter= document.querySelector("#like-counter-1");
+console.log(likeCounter)
+
+
+likeButton.addEventListener('click', function () {
+    likeButton.classList.add('like-button--liked');
+
+    likeCounter.innerHTML = parseFloat(likeCounter.innerHTML) + 1;
+
+    
+})

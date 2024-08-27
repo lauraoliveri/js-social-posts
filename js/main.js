@@ -98,14 +98,21 @@ for (let i = 0; i < posts.length; i++) {
 
     
     `;
-        // milestone 3
+       
 
-    const likeButton = document.querySelector(".like-button");
+}
+
+ // milestone 3
+
+    const likeButton = document.querySelectorAll('.js-like-button');
     // console.log(likeButton);
 
-    let likeCounter= document.querySelector(".js-likes-counter");
+    let likeCounter= document.querySelectorAll(".js-likes-counter");
     // console.log(likeCounter);
-    likeButton.addEventListener('click', function () {
+
+    for (let i = 0; i < likeButton.length; i++) {
+    
+        likeButton[i].addEventListener('click', function () {
         likeButton.classList.add('like-button--liked');
 
         likeCounter.innerHTML = parseFloat(likeCounter.innerHTML) + 1;
@@ -116,10 +123,8 @@ for (let i = 0; i < posts.length; i++) {
         
 
     });
-
-}
-
-
+    }
+    
 
 
    

@@ -90,7 +90,7 @@ for (let i = 0; i < posts.length; i++) {
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
+                        Piace a <b id="like-counter-${posts[i].id}" class="js-likes-counter">${posts[i].likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -107,26 +107,31 @@ for (let i = 0; i < posts.length; i++) {
     const likeButton = document.querySelectorAll('.js-like-button');
     // console.log(likeButton);
 
+    const LikedPosts = [];
 
     for (let i = 0; i < likeButton.length; i++) {
     
         likeButton[i].addEventListener('click', function () {
-            this.classList.add('like-button--liked');
-            
-            const Idpost = this.getAttribute('data-postid');
-            console.log(Idpost);
+            if (this.classList.contains('like-button--liked')== false) {
+                
+                this.classList.add('like-button--liked');
+                
+                const Idpost = this.getAttribute('data-postid');
+                // console.log(Idpost);
 
-            let likeCounter = document.getElementById('like-counter-' + Idpost)
-            // console.log(likeCounter);
-            
-            console.log(likeCounter.innerText);
+                let likeCounter = document.getElementById('like-counter-' + Idpost)
+                // console.log(likeCounter);
+                
+                console.log(likeCounter.innerText);
 
-            let likes = parseInt(likeCounter.innerText);
-            console.log(likes)
-            likes++;
-            likeCounter.innerHTML = likes;
+                let likes = parseInt(likeCounter.innerText);
+                // console.log(likes);
+                likes++;
+                likeCounter.innerHTML = likes;
 
-           
+                LikedPosts.push(Idpost);
+                console.log(LikedPosts);
+            }
         
 
         });

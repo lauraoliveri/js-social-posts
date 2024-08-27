@@ -84,7 +84,7 @@ for (let i = 0; i < posts.length; i++) {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" data-postid="1">
+                        <a class="like-button  js-like-button" data-postid="${posts[i].id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -107,22 +107,29 @@ for (let i = 0; i < posts.length; i++) {
     const likeButton = document.querySelectorAll('.js-like-button');
     // console.log(likeButton);
 
-    let likeCounter= document.querySelectorAll(".js-likes-counter");
-    // console.log(likeCounter);
 
     for (let i = 0; i < likeButton.length; i++) {
     
         likeButton[i].addEventListener('click', function () {
-        likeButton.classList.add('like-button--liked');
+            this.classList.add('like-button--liked');
+            
+            const Idpost = this.getAttribute('data-postid');
+            console.log(Idpost);
 
-        likeCounter.innerHTML = parseFloat(likeCounter.innerHTML) + 1;
+            let likeCounter = document.getElementById('like-counter-' + Idpost)
+            // console.log(likeCounter);
+            
+            console.log(likeCounter.innerText);
 
-        // creo l'array
+            let likes = parseInt(likeCounter.innerText);
+            console.log(likes)
+            likes++;
+            likeCounter.innerHTML = likes;
 
-        const myArr = [];
+           
         
 
-    });
+        });
     }
     
 
